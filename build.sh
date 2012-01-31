@@ -11,7 +11,11 @@ setup ()
     KERNEL_DIR="$(dirname "$(readlink -f "$0")")"
     BUILD_DIR="$KERNEL_DIR/build"
 <<<<<<< HEAD
+<<<<<<< HEAD
     MODULES=("fs/cifs/cifs.ko" "fs/fuse/fuse.ko" "fs/nls/nls_utf8.ko")
+=======
+    #MODULES=("fs/cifs/cifs.ko" "fs/fuse/fuse.ko" "fs/nls/nls_utf8.ko")
+>>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
 =======
     #MODULES=("fs/cifs/cifs.ko" "fs/fuse/fuse.ko" "fs/nls/nls_utf8.ko")
 >>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
@@ -40,6 +44,7 @@ build ()
     cp "$KERNEL_DIR/usr/"*.list "$target_dir/usr"
     sed "s|usr/|$KERNEL_DIR/usr/|g" -i "$target_dir/usr/"*.list
 <<<<<<< HEAD
+<<<<<<< HEAD
     THREADS=`cat /proc/cpuinfo | grep processor | wc -l`
     make -j${THREADS} ARCH=arm ${target}_cm9_defconfig
     make -j${THREADS}
@@ -52,11 +57,21 @@ build ()
     mka -C "$KERNEL_DIR" O="$target_dir" HOSTCC="$CCACHE gcc" CROSS_COMPILE="$CCACHE $CROSS_PREFIX" zImage modules
     cp "$target_dir"/arch/arm/boot/zImage $ANDROID_BUILD_TOP/device/samsung/galaxytab/kernel-$target
 >>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
+=======
+    mka -C "$KERNEL_DIR" O="$target_dir" ${target}\_cm9_defconfig HOSTCC="$CCACHE gcc"
+    mka -C "$KERNEL_DIR" O="$target_dir" HOSTCC="$CCACHE gcc" CROSS_COMPILE="$CCACHE $CROSS_PREFIX" zImage modules
+    cp "$target_dir"/arch/arm/boot/zImage $ANDROID_BUILD_TOP/device/samsung/galaxytab/kernel-$target
+>>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
 }
     
 setup
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+setup
+
+>>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
 =======
 setup
 
@@ -67,10 +82,16 @@ if [ "$1" = clean ] ; then
 fi
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 P1_target=$1
 targets=("$@")
 if [ 0 = "${#targets[@]}" ] ; then
     targets=($P1_target)
+=======
+targets=("$@")
+if [ 0 = "${#targets[@]}" ] ; then
+    targets=(p1 p1c p1l p1n)
+>>>>>>> b302688d4f6cc133e3b73238ff08ca4330cb64c9
 =======
 targets=("$@")
 if [ 0 = "${#targets[@]}" ] ; then
